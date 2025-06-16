@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DQW 安佐南区住所リスト</title>
+    <style>
+        body { font-family: sans-serif; padding: 1em; }
+        li { margin-bottom: 0.5em; }
+    </style>
+</head>
+<body>
+    <h1>DQウォーク 安佐南区　スポット</h1>
+    {% if addresses %}
+        <ul>
+            {% for address in addresses %}
+                <li>{{ loop.index }}. {{ address }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>現在、安佐南区の情報は見つかりません。</p>
+    {% endif %}
+</body>
+</html>
