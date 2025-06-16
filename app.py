@@ -4,12 +4,13 @@ from bs4 import BeautifulSoup
 from apscheduler.schedulers.blocking import BlockingScheduler
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
+from linebot.v3.messaging import MessagingApi, Configuration, ApiClient, PushMessageRequest, TextMessage
 import time
 import datetime
 
 # LINE Botのアクセストークン
 LINE_CHANNEL_ACCESS_TOKEN = 'hCtBuU/rokYdDTqWbLoodMYntmrpqQcqtj7QC2maGvLqBd7W7VTrQtHOoZTqFqRdFeG6ALYq3EM0ypnpiFwh3lB4OTCIuS4cLZpqB0WSvdJWgNJGHenPyZZjb+tAmAdvh3lUrxQ4lrJLN0L5cRdgHAdB04t89/1O/w1cDnyilFU='
-USER_ID = 'huntershu-huntershu-'
+USER_ID = 'huntershu-'
 
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 
@@ -39,8 +40,19 @@ def get_asaminami_addresses():
                     results.append(mb4_div.text.strip())
     return results
 
-def send_line_message(message):
-    line_bot_api.push_message(USER_ID, TextSendMessage(text=message))
+def send_line_message(text):
+    # 設定
+    configuration = Configuration(access_token=LINE_CHANNEL_ACCESS_TOKEN)
+
+    with ApiClient(configuration) as api_client:
+        messaging_api = MessagingApi(api_client)
+
+        # メッセージ構築
+        message = TextMessage(text=text)
+        request = PushMessageRequest(to=USER_ID, messages=[message])
+
+        # メッセージ送信
+        messaging_api.push_message(push_message_request=request)
 
 def job():
     print(f"[{datetime.datetime.now()}] 情報取得・送信中")
@@ -58,5 +70,5 @@ scheduler.add_job(job, 'cron', hour=12, minute=0)
 scheduler.add_job(job, 'cron', hour=15, minute=0)
 
 # 起動時に1回実行
-print()
+job()
 scheduler.start()
