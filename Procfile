@@ -1,1 +1,1 @@
-web: python strat.py
+web: python start.py
