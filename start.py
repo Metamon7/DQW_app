@@ -6,7 +6,7 @@ from linebot.exceptions import InvalidSignatureError
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi(os.getenv("hCtBuU/rokYdDTqWbLoodMYntmrpqQcqtj7QC2maGvLqBd7W7VTrQtHOoZTqFqRdFeG6ALYq3EM0ypnpiFwh3lB4OTCIuS4cLZpqB0WSvdJWgNJGHenPyZZjb+tAmAdvh3lUrxQ4lrJLN0L5cRdgHAdB04t89/1O/w1cDnyilFU="))
+line_bot_ sdk = LineBotApi(os.getenv("hCtBuU/rokYdDTqWbLoodMYntmrpqQcqtj7QC2maGvLqBd7W7VTrQtHOoZTqFqRdFeG6ALYq3EM0ypnpiFwh3lB4OTCIuS4cLZpqB0WSvdJWgNJGHenPyZZjb+tAmAdvh3lUrxQ4lrJLN0L5cRdgHAdB04t89/1O/w1cDnyilFU="))
 handler = WebhookHandler(os.getenv("c4543b8cfd7cde163e7fd52c44695630"))
 
 @app.route("/ callback", methods=['POST'])

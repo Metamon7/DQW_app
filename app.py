@@ -10,7 +10,7 @@ import datetime
 
 # LINE Botのアクセストークン
 LINE_CHANNEL_ACCESS_TOKEN = 'hCtBuU/rokYdDTqWbLoodMYntmrpqQcqtj7QC2maGvLqBd7W7VTrQtHOoZTqFqRdFeG6ALYq3EM0ypnpiFwh3lB4OTCIuS4cLZpqB0WSvdJWgNJGHenPyZZjb+tAmAdvh3lUrxQ4lrJLN0L5cRdgHAdB04t89/1O/w1cDnyilFU='
-USER_ID = 'huntershu-'
+USER_ID = ''
 
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 
