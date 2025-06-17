@@ -9,8 +9,8 @@ app = Flask(__name__)
 line_bot_api = LineBotApi(os.getenv("hCtBuU/rokYdDTqWbLoodMYntmrpqQcqtj7QC2maGvLqBd7W7VTrQtHOoZTqFqRdFeG6ALYq3EM0ypnpiFwh3lB4OTCIuS4cLZpqB0WSvdJWgNJGHenPyZZjb+tAmAdvh3lUrxQ4lrJLN0L5cRdgHAdB04t89/1O/w1cDnyilFU="))
 handler = WebhookHandler(os.getenv("c4543b8cfd7cde163e7fd52c44695630"))
 
-@app.route("/webhook", methods=['POST'])
-def webhook():
+@app.route("/ callback", methods=['POST'])
+def callback():
     signature = request.headers['X-Line-Signature']
     body = request.get_data(as_text=True)
 
@@ -23,7 +23,10 @@ def webhook():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    reply_text = f"あなたのメッセージ: {event.message.text}"
+    user_id = event.source.user_id
+    print(f"Received message from user ID: {user_id}")
+    # ここでユーザーIDを使って何か処理できます
+    reply_text = f"こんにちは！あなたのユーザーIDは {user_id} です。"
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=reply_text)
