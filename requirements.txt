@@ -1,5 +1,2 @@
-beautifulsoup4
-selenium
-apscheduler
+flask
 line-bot-sdk
-requests
