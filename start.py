@@ -14,6 +14,11 @@ LINE_CHANNEL_SECRET = 'c4543b8cfd7cde163e7fd52c44695630'
 configuration = Configuration(access_token=LINE_CHANNEL_ACCESS_TOKEN)
 parser = WebhookParser(LINE_CHANNEL_SECRET)
 
+@app.route("/")
+def index():
+    return "Hello, Railway!"
+
+
 @app.route("/callback", methods=['POST'])
 def callback():
     signature = request.headers.get('X-Line-Signature')
