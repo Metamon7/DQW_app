@@ -14,9 +14,9 @@ LINE_CHANNEL_SECRET = 'c4543b8cfd7cde163e7fd52c44695630'
 configuration = Configuration(access_token=LINE_CHANNEL_ACCESS_TOKEN)
 parser = WebhookParser(LINE_CHANNEL_SECRET)
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def index():
-    return "Hello, Railway!"
+    return "🚀 Flask app is running!"
 
 
 @app.route("/callback", methods=['POST'])
